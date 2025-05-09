@@ -8,7 +8,7 @@ dotenv.config();
 
 
 
-let tempUsers = new Map(); // temporary in-memory storage (use Redis or DB for production)
+let tempUsers = new Map(); 
 
 export const register = async (req, res) => {
     const { username, email, password, name } = req.body;
@@ -143,7 +143,7 @@ export const login = async (req, res) => {
                 where: { email },
                 data: {
                     VerificationToken: otp,
-                    VerifyOtpExpireAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+                    VerifyOtpExpireAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
                 },
             });
 
@@ -209,7 +209,7 @@ export const sendVerifyOtp = async (req, res) => {
             where: { email },
             data: {
                 VerificationToken: otp,
-                VerifyOtpExpireAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24h expiry
+                VerifyOtpExpireAt: new Date(Date.now() + 24 * 60 * 60 * 1000), 
             },
         });
 
